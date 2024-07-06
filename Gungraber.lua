@@ -7,7 +7,7 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart") -- Parte cen
 local originalPosition = humanoidRootPart.CFrame
 
 -- Localizando o item GunDrop no Workspace
-local gunDrop = game:GetService("Workspace"):WaitForChild("GunDrop")
+local gunDrop = game:GetService("Workspace").Normal.Raggy.HumanoidRootPart
 
 -- Função para teleportar o personagem
 local function teleportTo(targetPosition)
