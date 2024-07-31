@@ -7,18 +7,24 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart") -- Parte cen
 local originalPosition = humanoidRootPart.CFrame
 
 -- Localizando o item GunDrop no Workspace
-game:GetService("Workspace").Normal.GunDrop
--- Função para teleportar o personagem
-local function teleportTo(targetPosition)
-    humanoidRootPart.CFrame = targetPosition
+local gunDrop = game:GetService("Workspace").Normal:FindFirstChild("GunDrop")
+
+-- Verifica se o GunDrop existe
+if gunDrop then
+    -- Função para teleportar o personagem
+    local function teleportTo(targetPosition)
+        humanoidRootPart.CFrame = targetPosition
+    end
+
+    -- Teleporta o personagem para uma posição logo acima do GunDrop
+    local offset = Vector3.new(0, 5, 0) -- Ajuste a altura conforme necessário (5 unidades acima)
+    teleportTo(gunDrop.CFrame + offset)
+
+    -- Pausa por um curto período de tempo
+    wait(0.2) -- 0.2 segundos (ajuste conforme necessário para sua aplicação)
+
+    -- Teleporta o personagem de volta para a posição original
+    teleportTo(originalPosition)
+else
+    warn("GunDrop não encontrado no Workspace.")
 end
-
--- Teleporta o personagem para uma posição logo acima do GunDrop
-local offset = Vector3.new(0, 5, 0) -- Ajuste a altura conforme necessário (5 unidades acima)
-teleportTo(gunDrop.CFrame + offset)
-
--- Pausa por um curto período de tempo
-wait(0.5) -- 0.1 segundos (ajuste conforme necessário para sua aplicação)
-
--- Teleporta o personagem de volta para a posição original
-teleportTo(originalPosition)
