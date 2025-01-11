@@ -7,7 +7,7 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart") -- Parte cen
 local originalPosition = humanoidRootPart.CFrame
 
 -- Localizando o item GunDrop no Workspace
-local gunDrop = game:GetService("Workspace").Normal:FindFirstChild("GunDrop")
+local gunDrop = game:GetService("Workspace").Station.GunDrop
 
 -- Verifica se o GunDrop existe
 if gunDrop then
