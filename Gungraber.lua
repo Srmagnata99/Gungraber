@@ -6,8 +6,18 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart") -- Parte cen
 -- Salvar a localização atual do personagem
 local originalPosition = humanoidRootPart.CFrame
 
--- Localizando o item GunDrop no Workspace
-local gunDrop = game:GetService("Workspace").Station.GunDrop
+-- Função para localizar o GunDrop no Workspace
+local function findGunDrop()
+    for _, item in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if item:IsA("BasePart") and item.Name == "GunDrop" then
+            return item -- Retorna o GunDrop encontrado
+        end
+    end
+    return nil -- Retorna nil se o GunDrop não for encontrado
+end
+
+-- Localizando o GunDrop
+local gunDrop = findGunDrop()
 
 -- Verifica se o GunDrop existe
 if gunDrop then
